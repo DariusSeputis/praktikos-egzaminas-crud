@@ -27,14 +27,17 @@ const ShowExistingUsers = () => {
   return loading ? (
     <div>Loading..</div>
   ) : (
-    <div className='cards'>
-      {dataFromDB.map((user) => (
-        <div key={user._id} className='card'>
-          <span>{user.name}</span>
-          <span>{user.age}</span>
-          <span>{user.email}</span>
-        </div>
-      ))}
+    <div>
+      <h2>All users</h2>
+      <div className='cards'>
+        {dataFromDB.map((user) => (
+          <div key={user._id} className='card'>
+            <span>{user.name}</span>
+            <span>{user.age}</span>
+            <span>{user.email}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

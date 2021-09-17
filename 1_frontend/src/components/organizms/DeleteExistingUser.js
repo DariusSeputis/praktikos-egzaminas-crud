@@ -23,6 +23,7 @@ const DeleteExistingUser = () => {
     <div>Loading...</div>
   ) : (
     <div>
+      <h2>Delete user</h2>
       <select
         value={selectValue}
         onChange={(e) => setSelectValue(e.target.value)}
