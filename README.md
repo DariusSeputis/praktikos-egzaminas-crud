@@ -6,6 +6,10 @@ In backend direktory creating package.json:
 
 ### npm init
 
+Instaling fronend dependencies:
+
+### npm i axios
+
 Instaling backend dependencies:
 
 ### npm i express dotenv mongoose cors

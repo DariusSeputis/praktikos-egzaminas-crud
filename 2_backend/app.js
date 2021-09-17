@@ -1,8 +1,9 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-require('dotenv').config();
+dotenv.config();
 
 const PORT = process.env.PORT;
 const app = express();
@@ -26,13 +27,14 @@ app.use(cors());
 app.use(express.json());
 
 // Controllers
-import { getAllUsers } from './controllers/userController.js';
+import { getAllUsers, postNewUser } from './controllers/userController.js';
 
 // Routes
 // - GET
 app.get('/users', getAllUsers);
 // - POST
-
+app.post('/addUser', postNewUser);
 // - PUT
 
 // - DELETE
+// app.delete('/deleteUser', deleteSingleUser);
