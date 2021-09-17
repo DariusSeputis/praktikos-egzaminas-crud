@@ -1,21 +1,50 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 
 import { DataFromDBContext } from '../templates/Main';
 
 const DeleteExistingUser = () => {
-  const { dataFromDB, setDataFromDB } = useContext(DataFromDBContext);
+  const { dataFromDB, setDataFromDB, loading, setLoading } =
+    useContext(DataFromDBContext);
+  // Hooks
+  // - State
+  // -- Local
+  const [selectValue, setSelectValue] = useState('');
 
-  return (
+  // CUSTOM FUNCTION
+  const deleteUserFromDB = () => {
+    console.log(selectValue);
+  };
+
+  return loading ? (
+    <div>Loading...</div>
+  ) : (
     <div>
-      <select name='users'>
+      <select
+        value={selectValue}
+        onChange={(e) => setSelectValue(e.target.value)}
+        name='users'
+      >
+        <option value='user' default>
+          Chose User
+        </option>
         {dataFromDB.map((user) => (
-          <option key={user._id} value={user.email}>
+          <option key={user._id} value={user._id}>
             {user.name}, {user.email}
           </option>
         ))}
       </select>
-      <button>Delete user</button>
+      <button
+        onClick={() => {
+          if (!selectValue || selectValue === 'user') {
+            alert('Pleace select user');
+          } else {
+            deleteUserFromDB();
+          }
+        }}
+      >
+        Delete user
+      </button>
     </div>
   );
 };

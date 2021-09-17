@@ -20,11 +20,13 @@ const ShowExistingUsers = () => {
       })
       .catch((err) => setFetchingError(err))
       .finally(() => {
-        !setFetchingError ? setLoading(false) : console.log(fetchingError);
+        !fetchingError ? setLoading(false) : console.log(fetchingError);
       });
   }, [fetchingError]);
 
-  return (
+  return loading ? (
+    <div>Loading..</div>
+  ) : (
     <div className='cards'>
       {dataFromDB.map((user) => (
         <div key={user._id} className='card'>
