@@ -11,3 +11,36 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+footer,
+main,
+header {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.card {
+  border: 1px solid black;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+@media screen and (min-width: 500px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (min-width: 750px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

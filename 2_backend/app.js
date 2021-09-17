@@ -27,7 +27,11 @@ app.use(cors());
 app.use(express.json());
 
 // Controllers
-import { getAllUsers, postNewUser } from './controllers/userController.js';
+import {
+  getAllUsers,
+  postNewUser,
+  deleteSingleUser,
+} from './controllers/userController.js';
 
 // Routes
 // - GET
@@ -37,4 +41,4 @@ app.post('/addUser', postNewUser);
 // - PUT
 
 // - DELETE
-// app.delete('/deleteUser', deleteSingleUser);
+app.delete('/deleteUser', deleteSingleUser);

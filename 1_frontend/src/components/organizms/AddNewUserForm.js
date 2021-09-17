@@ -77,7 +77,7 @@ const AddNewUserForm = () => {
           onChange={(e) => setCreateUserConfirmPassword(e.target.value)}
         />
         <br />
-        <input type='submit' />
+        <input type='submit' value='Submit' />
       </form>
       <span>{message}</span>
     </div>

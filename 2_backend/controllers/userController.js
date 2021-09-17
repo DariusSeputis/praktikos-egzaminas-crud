@@ -3,7 +3,7 @@ import { UserModel } from '../models/userModel.js';
 // GET ALL FROM USERS COLLECTION
 export const getAllUsers = (req, res) => {
   UserModel.find()
-    .then((data) => res.json())
+    .then((data) => res.json(data))
     .catch((err) => console.log(err));
 };
 
@@ -32,6 +32,19 @@ export const postNewUser = (req, res) => {
         .catch((err) => console.log(err));
     }
   });
+};
 
-  // ---------------------------
+// DELETE SINGLE USER FROM DB BASED ON ITS ID
+export const deleteSingleUser = (req, res) => {
+  const userId = req.params.id;
+
+  UserModel.findByIdAndDelete(userId)
+    .then((response) => {
+      UserModel.find()
+        .then((data) =>
+          res.json({ data: data, message: 'User succesfully deleted from DB' })
+        )
+        .catch((error) => console.log(error));
+    })
+    .catch((err) => console.log(err));
 };
