@@ -4,8 +4,7 @@ import axios from 'axios';
 import { DataFromDBContext } from '../templates/Main';
 
 const DeleteExistingUser = () => {
-  const { dataFromDB, setDataFromDB, loading, setLoading } =
-    useContext(DataFromDBContext);
+  const { dataFromDB, setDataFromDB, loading } = useContext(DataFromDBContext);
   // Hooks
   // - State
   // -- Local

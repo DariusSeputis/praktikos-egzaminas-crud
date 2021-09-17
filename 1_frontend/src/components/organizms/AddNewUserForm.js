@@ -5,8 +5,7 @@ import { DataFromDBContext } from '../templates/Main';
 
 const AddNewUserForm = () => {
   // Context
-  const { dataFromDB, setDataFromDB, loading, setLoading } =
-    useContext(DataFromDBContext);
+  const { setDataFromDB } = useContext(DataFromDBContext);
   // Hooks
   // -- state
   // ---- local
@@ -44,6 +43,7 @@ const AddNewUserForm = () => {
 
   return (
     <div>
+      <h2>Add new user</h2>
       <form onSubmit={createUser}>
         <label htmlFor='createUserName'>Name: </label>
         <input

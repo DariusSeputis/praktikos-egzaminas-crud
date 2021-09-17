@@ -38,6 +38,24 @@ export const postNewUser = (req, res) => {
     }
   });
 };
+// PUT, EDIT USER INFO BASED ON ITS ID
+export const editUserInfo = (req, res) => {
+  const userToUpdateId = req.params.id;
+  const updatedUserData = req.body;
+  UserModel.findByIdAndUpdate(userToUpdateId, updatedUserData)
+    .then((data) =>
+      UserModel.find()
+        .then((data) =>
+          res.json({
+            usersData: data,
+            status: 'success',
+            message: 'User updated successfuly',
+          })
+        )
+        .catch((err) => console.log(err))
+    )
+    .catch((err) => console.log(err));
+};
 
 // DELETE SINGLE USER FROM DB BASED ON ITS ID
 export const deleteSingleUser = (req, res) => {

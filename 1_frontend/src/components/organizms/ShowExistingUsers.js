@@ -22,7 +22,7 @@ const ShowExistingUsers = () => {
       .finally(() => {
         !fetchingError ? setLoading(false) : console.log(fetchingError);
       });
-  }, [fetchingError]);
+  }, [fetchingError, setDataFromDB, setLoading]);
 
   return loading ? (
     <div>Loading..</div>

@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
 import AddNewUserForm from '../organizms/AddNewUserForm';
 import DeleteExistingUser from '../organizms/DeleteExistingUser';
+import EditExistingUser from '../organizms/EditExistingUser';
 import ShowExistingUsers from '../organizms/ShowExistingUsers';
 
 export const DataFromDBContext = createContext();
@@ -17,6 +18,8 @@ const Main = () => {
         <ShowExistingUsers />
         <hr />
         <AddNewUserForm />
+        <hr />
+        <EditExistingUser />
         <hr />
         <DeleteExistingUser />
         <hr />

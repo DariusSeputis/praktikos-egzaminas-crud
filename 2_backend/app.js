@@ -31,6 +31,7 @@ import {
   getAllUsers,
   postNewUser,
   deleteSingleUser,
+  editUserInfo,
 } from './controllers/userController.js';
 
 // Routes
@@ -39,6 +40,6 @@ app.get('/users', getAllUsers);
 // - POST
 app.post('/addUser', postNewUser);
 // - PUT
-
+app.put('/editUser/:id', editUserInfo);
 // - DELETE
 app.delete('/deleteUser/:id', deleteSingleUser);
