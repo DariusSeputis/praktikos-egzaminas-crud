@@ -14,6 +14,10 @@ const DeleteExistingUser = () => {
   // CUSTOM FUNCTION
   const deleteUserFromDB = () => {
     console.log(selectValue);
+    axios
+      .delete(`http://127.0.0.1:5000/deleteUser/${selectValue}`)
+      .then((res) => setDataFromDB(res.data.usersData))
+      .catch((err) => console.log(err));
   };
 
   return loading ? (

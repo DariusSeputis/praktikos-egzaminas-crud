@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 
+import { DataFromDBContext } from '../templates/Main';
+
 const AddNewUserForm = () => {
+  // Context
+  const { dataFromDB, setDataFromDB, loading, setLoading } =
+    useContext(DataFromDBContext);
   // Hooks
   // -- state
   // ---- local
@@ -23,14 +28,17 @@ const AddNewUserForm = () => {
       setCreateUserConfirmPassword('');
       return;
     }
+    let newUser = {
+      name: createUserName,
+      age: createUserAge,
+      email: createUserEmail,
+      password: createUserPassword,
+    };
     axios
-      .post('http://127.0.0.1:5000/addUser', {
-        name: createUserName,
-        age: createUserAge,
-        email: createUserEmail,
-        password: createUserPassword,
+      .post('http://127.0.0.1:5000/addUser', newUser)
+      .then((res) => {
+        if (res.data.status === 'success') setDataFromDB(res.data.usersData);
       })
-      .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };
 

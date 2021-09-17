@@ -24,10 +24,15 @@ export const postNewUser = (req, res) => {
       newUser
         .save()
         .then((data) =>
-          res.json({
-            status: 'success',
-            message: 'User successfuly added to db',
-          })
+          UserModel.find()
+            .then((data) =>
+              res.json({
+                usersData: data,
+                status: 'success',
+                message: 'User added successfuly',
+              })
+            )
+            .catch((err) => console.log(err))
         )
         .catch((err) => console.log(err));
     }
@@ -42,7 +47,10 @@ export const deleteSingleUser = (req, res) => {
     .then((response) => {
       UserModel.find()
         .then((data) =>
-          res.json({ data: data, message: 'User succesfully deleted from DB' })
+          res.json({
+            usersData: data,
+            message: 'User succesfully deleted from DB',
+          })
         )
         .catch((error) => console.log(error));
     })

@@ -41,4 +41,4 @@ app.post('/addUser', postNewUser);
 // - PUT
 
 // - DELETE
-app.delete('/deleteUser', deleteSingleUser);
+app.delete('/deleteUser/:id', deleteSingleUser);
